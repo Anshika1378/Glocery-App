@@ -33,8 +33,8 @@ function CartProduct() {
                     <div key={product.id} className="items border relative block p-4 rounded">
                         <div className="card hover:bg-gray-200">
                             <p className=" flex text-blue-400 text-xl">{product.discountPercentage}%</p>
-                            <button className="absolute mr-2 p-2 cursor-pointer text-red-500 bottom-70 right-0 hover:text-red-800"><AiFillHeart/></button>
                             <Link to={`/product/ ${product.id}`}>
+                            <button className="absolute mr-2 p-2 cursor-pointer bottom-70 right-0 hover:text-red-500"><AiFillHeart/></button>
                             <img src={[product.thumbnail]} alt={product.title} />
                             </Link>
                         </div>

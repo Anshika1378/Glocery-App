@@ -12,6 +12,24 @@ function All_Images() {
   const [product, setProduct] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
+  const handleCart = () =>{
+    const existingProduct = JSON.parse(localStorage.getItem("cart-product")) || [];
+
+    const existingProductIndex = existingProduct.findIndex(
+      (item) => item.id === product.id
+    );
+
+    if(existingProductIndex !== -1){
+      existingProduct[existingProductIndex].quantity  += 1;
+      alert("Cart Updated")
+    }else{
+      existingProduct.push({  ...product ,quantity: 1});
+    }
+    localStorage.setItem("cart-product",JSON.stringify(existingProduct))
+    setMyCart(existingProduct)
+     alert("New Card Updated")
+  };
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -55,7 +73,9 @@ function All_Images() {
         {product.images && product.images.length > 0 && (
           <img src={product.images[0]} alt={product.title} className="mx-auto mt-4 max-w-md lg:content-center md:content-center sm:content-center" />
         )}
-        <p><b>Details: </b>{product.description}</p>
+        <button onClick={handleCart} className="bg-gray-300 hover:bg-blue-500 text-black hover:text-white px-1 py-1 rounded me-1 border-blue-500">Add to Cart</button>
+        <button className="bg-blue-600 text-white hover:bg-blue-900 rounded px-1 py-1">Buy Now</button>
+        <p className="mt-2"><b>Details: </b>{product.description}</p>
         <h1 className="mt-2 text-xl ">{product.title}</h1>
       </div>
     </>

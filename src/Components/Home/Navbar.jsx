@@ -2,12 +2,15 @@ import { TbShoppingBag } from "react-icons/tb";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useState } from "react";
 import ShoeDetails from "./ShoeDetails";
+import { Link } from "react-router-dom";
+
 
 
 
 const ROUTES = ["Home", "About", "Services", "Payment", "Contaxt"]
-function Navbar() {
+function Navbar({ myCart = [] }) {
 
+    const totalCartItems = myCart.length;
     const [isMoblileMenu, setisMoblieMenu] = useState(false);
     return (
         <>
@@ -30,9 +33,14 @@ function Navbar() {
                 </div>
                 {/* cart button */}
                 <div className="fixed left-4 bottom-4 lg:static">
+                    <Link to={"/my-cart"}>
                     <div className="flex-center rounded-full bg-white shadow-md lg:mr-8">
                         <TbShoppingBag />
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            {totalCartItems}
+                        </span>
                     </div>
+                    </Link>
                 </div>
             </nav>
             <ShoeDetails />
