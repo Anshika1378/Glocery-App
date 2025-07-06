@@ -2,6 +2,7 @@ import { TbShoppingBag } from "react-icons/tb";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import MyCart from "../../MyCart/MyCart";
 
 const ROUTES = [{ name: "Home", path: "/" },
 { name: "About", path: "/about" },
@@ -9,8 +10,10 @@ const ROUTES = [{ name: "Home", path: "/" },
 { name: "Payment", path: "/payment" },
 { name: "Contaxt", path: "/contact" }
 ];
-function Nav() {
+function Nav({ myCart = [] }) {
     const [isMoblileMenu, setisMoblieMenu] = useState(false);
+
+    const totalCartItems = myCart.length;
     return (
         <>
             <nav className="relative z-10 flex flex-wrap justify-between items-center ">
@@ -36,9 +39,14 @@ function Nav() {
                 </div>
                 {/* cart button */}
                 <div className="fixed left-4 bottom-4 lg:static">
-                    <div className="flex-center rounded-full bg-white shadow-md lg:mr-8">
-                        <TbShoppingBag />
-                    </div>
+                    <Link to={"/my-cart"}>
+                        <div className="relative flex items-center rounded-full bg-white shadow-md lg:mr-8 p-2">
+                            <TbShoppingBag size={24} />
+                            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2">
+                                {totalCartItems}
+                            </span>
+                        </div>
+                    </Link>
                 </div>
             </nav>
         </>

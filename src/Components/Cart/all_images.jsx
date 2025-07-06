@@ -12,22 +12,21 @@ function All_Images() {
   const [product, setProduct] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleCart = () =>{
+  const handleCart = () => {
     const existingProduct = JSON.parse(localStorage.getItem("cart-product")) || [];
 
-    const existingProductIndex = existingProduct.findIndex(
-      (item) => item.id === product.id
-    );
+    const index = existingProduct.findIndex((item) => item.id === product.id);
 
-    if(existingProductIndex !== -1){
-      existingProduct[existingProductIndex].quantity  += 1;
-      alert("Cart Updated")
-    }else{
-      existingProduct.push({  ...product ,quantity: 1});
+    if (index !== -1) {
+      existingProduct[index].quantity += 1;
+      alert("Cart Updated");
+    } else {
+      existingProduct.push({ ...product, quantity: 1 });
+      alert("New Cart Item Added");
     }
-    localStorage.setItem("cart-product",JSON.stringify(existingProduct))
-    setMyCart(existingProduct)
-     alert("New Card Updated")
+
+    localStorage.setItem("cart-product", JSON.stringify(existingProduct));
+    setMyCart(existingProduct);
   };
 
   useEffect(() => {

@@ -34,12 +34,12 @@ function Navbar({ myCart = [] }) {
                 {/* cart button */}
                 <div className="fixed left-4 bottom-4 lg:static">
                     <Link to={"/my-cart"}>
-                    <div className="flex-center rounded-full bg-white shadow-md lg:mr-8">
-                        <TbShoppingBag />
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                            {totalCartItems}
-                        </span>
-                    </div>
+                        <div className="relative flex items-center rounded-full bg-white shadow-md lg:mr-8 p-2">
+                            <TbShoppingBag size={24} />
+                            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2">
+                                {totalCartItems}
+                            </span>
+                        </div>
                     </Link>
                 </div>
             </nav>
