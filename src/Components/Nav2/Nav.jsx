@@ -13,7 +13,7 @@ const ROUTES = [{ name: "Home", path: "/" },
 function Nav({ myCart = [] }) {
     const [isMoblileMenu, setisMoblieMenu] = useState(false);
 
-    const totalCartItems = myCart.length;
+    const totalCartItems = myCart.reduce((total, item) => total + (item.quantity || 1), 0);
     return (
         <>
             <nav className="relative z-10 flex flex-wrap justify-between items-center ">

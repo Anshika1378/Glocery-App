@@ -1,7 +1,9 @@
+import { BsArrowLeft } from "react-icons/bs"; 
 import { useEffect, useState } from "react";
 import Nav from "../Components/Nav2/Nav";
+import { Link } from "react-router-dom";
 
-function MyCart() {
+function MyCart({ myCart, setMyCart }) {
     const [myProduct, setMyProduct] = useState([]);
 
     useEffect(() => {
@@ -17,10 +19,15 @@ function MyCart() {
 
     return (
         <>
-            <Nav />
+            <Nav myCart={myCart} />
             <div className="container mx-auto p-4">
                 {myProduct.length === 0 ? (
-                    <h1 className="text-center text-xl font-bold">CART IS EMPTY</h1>
+                    <div className="">
+                        <h1 className="text-center text-3xl font-mono text-pink-300">CART IS EMPTY</h1>
+                        <Link to="/">
+                        <p className="text-2xl text-blue-200 font-serif flex text-center "><BsArrowLeft className="text-blue-400" />Exit</p>
+                        </Link>
+                    </div>
                 ) : (
                     <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {myProduct.map((item, index) => (

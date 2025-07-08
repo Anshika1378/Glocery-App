@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Nav from "../Nav2/Nav";
 
-function All_Images() {
+function All_Images({myCart=[]}) {
 
   const { id } = useParams();
   const userId = parseInt(id);
@@ -58,7 +58,7 @@ function All_Images() {
 
   return (
     <>
-      <Nav />
+      <Nav myCart={myCart}/>
       <div className="container mt-6">
         <h1 className=" text-5xl text-gray-700  font-semibold  font-serif">{product.brand}</h1>
         {/* Star Ratings */}
