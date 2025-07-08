@@ -26,7 +26,7 @@ function All_Images({myCart=[]}) {
     }
 
     localStorage.setItem("cart-product", JSON.stringify(existingProduct));
-    setMyCart(existingProduct);
+   
   };
 
   useEffect(() => {
@@ -49,7 +49,7 @@ function All_Images({myCart=[]}) {
         <div className="row justify-content-center">
           <div className="col-lg-2 mt-5">
             <div className="spinner-border text-primary" role="status"></div>
-            <span class="visually-hidden">Loading...</span>
+            <span className="visually-hidden">Loading...</span>
           </div>
         </div>
       </div>
