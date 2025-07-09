@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import About from "./Components/NavItem/About";
 import Services from "./Components/NavItem/services";
 import Payment from "./Components/NavItem/payment";
-import Contact from "./Components/NavItem/contact";
+import Contact from "./Components/NavItem/Contact";
 
 
 function App() {
